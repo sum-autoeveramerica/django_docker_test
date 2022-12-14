@@ -1,0 +1,21 @@
+version "3"
+services:
+  app_manage:
+    container_name: cn_app_manage
+    build:
+      context: ./../../
+      dockerfile: ./docker/manage/Dockerfile
+    image: app_manage:tmp
+    volumes:
+      - /opt/apps/djangoapp/static:/usr/src/app/staticfiles
+    environment:
+      - DB_ENGINE=${DB_ENGINE}
+      - DB_DATABASE=${DB_DATABASE}
+      - DB_USER=${DB_USER}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_HOST=${DB_HOST}
+      - DB_PORT=${DB_PORT}
+    command: >
+      sh -c "python manage.py collectstatic --noinput &&
+             python manage.py makemigrations &&
+             python manage.py migrate"
