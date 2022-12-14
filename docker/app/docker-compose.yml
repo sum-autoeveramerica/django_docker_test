@@ -1,0 +1,18 @@
+version: "3"
+services:
+  app_run:
+    container_name: cn_app_run
+    build:
+      context: ./../../
+      dockerfile: ./docker/app/Dockerfile
+    image: django_app:${SRC_VERSION}
+    volumes:
+      - /opt/apps/djangoapp/static:/usr/src/app/staticfiles
+    environment:
+      - DB_ENGINE=${DB_ENGINE}
+      - DB_DATABASE=${DB_DATABASE}
+      - DB_USER=${DB_USER}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_HOST=${DB_HOST}
+      - DB_PORT=${DB_PORT}
+    entrypoint: ["gunicorn", "config.asgi", "-b", "0.0.0.0", "-w", "4", "-k", "uvicorn.workers.UvicornWorker"]
