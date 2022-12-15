@@ -15,6 +15,7 @@ services:
       - DB_PASSWORD=${DB_PASSWORD}
       - DB_HOST=${DB_HOST}
       - DB_PORT=${DB_PORT}
+      - DEBUG=${DEBUG}
     ports:
       - 8881:8000
     entrypoint: ["gunicorn", "config.asgi", "-b", "0.0.0.0", "-w", "4", "-k", "uvicorn.workers.UvicornWorker"]
