@@ -1,13 +1,14 @@
 version: "3"
 services:
-  app_run:
-    container_name: cn_app_run
+  test_app:
+    container_name: ${CONTAINER_NAME:-cn_test_app}
     build:
       context: ./../../
       dockerfile: ./docker/app/Dockerfile
     image: django_app:${SRC_VERSION}
     # volumes:
-    #   - /opt/apps/djangoapp/static:/usr/src/app/staticfiles
+    #   - ${WEB_ROOT_STATIC:-/var/www/html/static}:/opt/app/staticfiles
+    #   - ${WEB_ROOT_MEDIA:-/var/www/html/media}:/opt/app/media
     environment:
       - DB_ENGINE=${DB_ENGINE}
       - DB_DATABASE=${DB_DATABASE}

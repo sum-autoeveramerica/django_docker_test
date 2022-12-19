@@ -1,14 +1,14 @@
 version: "3"
 services:
-  app_manage:
-    container_name: cn_app_manage
+  test_manage:
+    container_name: cn_test_manage
     build:
       context: ./../../
       dockerfile: ./docker/manage/Dockerfile
     image: app_manage:tmp
     volumes:
-      - ./../..:/usr/src/app
-      - /opt/apps/djangoapp/static:/usr/src/app/staticfiles
+      - ./../..:/opt/app
+      - ${WEB_ROOT_STATIC:-/var/www/html/staitc}:/opt/app/staticfiles
     environment:
       - DB_ENGINE=${DB_ENGINE}
       - DB_DATABASE=${DB_DATABASE}

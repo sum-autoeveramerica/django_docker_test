@@ -1,7 +1,7 @@
 
 FROM python:3.10.9-alpine as builder
 
-WORKDIR /usr/src/app
+WORKDIR /opt/app
 
 # install psycopg2 dependencies
 RUN apk update \
