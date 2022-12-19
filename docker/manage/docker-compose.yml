@@ -5,7 +5,7 @@ services:
     build:
       context: ./../../
       dockerfile: ./docker/manage/Dockerfile
-    image: app_manage:tmp
+    image: test_manage:tmp
     volumes:
       - ./../..:/opt/app
       - ${WEB_ROOT_STATIC:-/var/www/html/staitc}:/opt/app/staticfiles

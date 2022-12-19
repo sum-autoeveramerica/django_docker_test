@@ -5,7 +5,7 @@ services:
     build:
       context: ./../../
       dockerfile: ./docker/app/Dockerfile
-    image: django_app:${SRC_VERSION}
+    image: test_app:${SRC_VERSION}
     # volumes:
     #   - ${WEB_ROOT_STATIC:-/var/www/html/static}:/opt/app/staticfiles
     #   - ${WEB_ROOT_MEDIA:-/var/www/html/media}:/opt/app/media
